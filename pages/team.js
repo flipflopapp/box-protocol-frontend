@@ -26,6 +26,7 @@ export default function Team() {
                   href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${email}`}
                   className={styles.socialIcon}
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <i className="bi bi-envelope-at-fill"></i>
                 </a>
@@ -35,17 +36,28 @@ export default function Team() {
                   href={linkedin}
                   className={styles.socialIcon}
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <i className="bi bi-linkedin"></i>
                 </a>
               )}
               {github && (
-                <a href={github} className={styles.socialIcon} target="_blank">
+                <a
+                  href={github}
+                  className={styles.socialIcon}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <i className="bi bi-github"></i>
                 </a>
               )}
               {twitter && (
-                <a href={twitter} className={styles.socialIcon} target="_blank">
+                <a
+                  href={twitter}
+                  className={styles.socialIcon}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <i className="bi bi-twitter"></i>
                 </a>
               )}
@@ -54,12 +66,18 @@ export default function Team() {
                   href={instagram}
                   className={styles.socialIcon}
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <i className="bi bi-instagram"></i>
                 </a>
               )}
               {medium && (
-                <a href={medium} className={styles.socialIcon} target="_blank">
+                <a
+                  href={medium}
+                  className={styles.socialIcon}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <i className="bi bi-medium"></i>
                 </a>
               )}

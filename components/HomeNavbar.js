@@ -12,7 +12,12 @@ const HomeNavbar = () => {
       <ul className={styles.navlist}>
         <li className={styles.navlistitem}></li>
         <li className={styles.navlistitem}>
-          <a className={styles.navText} href={DOCS_LINK} target="_blank">
+          <a
+            className={styles.navText}
+            href={DOCS_LINK}
+            target="_blank"
+            rel="noreferrer"
+          >
             Docs
           </a>
         </li>
