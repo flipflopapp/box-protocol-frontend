@@ -32,7 +32,7 @@ const Web3Button = () => {
     pendingChainId,
     switchNetwork,
   } = useSwitchNetwork();
-  // console.log({ goerli });
+  // console.log({ chain });
 
   const copyAddressHandler = () => {
     navigator.clipboard.writeText(address);
@@ -62,15 +62,13 @@ const Web3Button = () => {
   const SwitchNetworkButton = () => {
     let swichToText;
     let switchId;
-    let currentNetworkName;
+    const currentNetworkName = chain.name;
     if (chain.id === goerli.id) {
       switchId = mainnet.id;
       swichToText = "Ethereum Network";
-      currentNetworkName = "Goerli Network";
-    } else if (chain.id === mainnet.id) {
+    } else {
       switchId = goerli.id;
       swichToText = "Goerli Network";
-      currentNetworkName = "Ethereum Network";
     }
 
     return (
@@ -94,11 +92,14 @@ const Web3Button = () => {
   const DisconnectWalletButton = () => {
     let displayAddress =
       address.substring(0, 6) + "...." + address.substring(address.length - 4);
-    const { data: ensName } = useEnsName({
-      address: address,
-    });
-    if (ensName) {
-      displayAddress = ensName;
+
+    if (chain.id === 1 || chain.id === 5) {
+      const { data: ensName } = useEnsName({
+        address: address,
+      });
+      if (ensName) {
+        displayAddress = ensName;
+      }
     }
 
     return (

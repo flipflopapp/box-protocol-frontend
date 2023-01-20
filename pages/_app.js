@@ -1,20 +1,23 @@
 import "@/styles/globals.css";
 import Head from "next/head";
 
+import { WagmiConfig, createClient, configureChains } from "wagmi";
 import {
-  WagmiConfig,
-  createClient,
-  configureChains,
-  goerli,
+  avalanche,
+  bsc,
   mainnet,
-} from "wagmi";
+  goerli,
+  polygon,
+  polygonMumbai,
+  sepolia,
+} from "@wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 
 export default function App({ Component, pageProps }) {
   const { chains, provider, webSocketProvider } = configureChains(
-    [mainnet, goerli],
+    [avalanche, bsc, mainnet, goerli, polygon, polygonMumbai, sepolia],
     [
       alchemyProvider({ apiKey: "ci-UCdnjUtCTp8oLAj9X4iyD1dTR90vp" }),
       publicProvider(),
