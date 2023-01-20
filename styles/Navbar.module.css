@@ -26,16 +26,19 @@
 
 .navText {
   color: rgba(240, 248, 255, 0.587);
+  text-decoration: none;
 }
 
 .navText:hover {
   color: rgba(240, 248, 255, 0.85);
+  text-decoration: none;
 }
 
 .navTextActive{
   color: rgba(240, 248, 255, 0.85);
   /* color: rgba(240, 248, 255, 0.587); */
   /* text-decoration: underline; */
+  text-decoration: none;
 }
 
 .connectButton {
