@@ -83,6 +83,7 @@
   /* background: linear-gradient(45deg, #3a4ea9f8, #2ba2d1f6); */
   background-color: #2ba2d1f6;
   color: #101014;
+  transition: 0.3s;
 }
 
 /* .modal {

@@ -13,22 +13,24 @@ function BuySellTab({ buyBoxes, sellBoxes }) {
   return (
     <div className={styles.buySellArea}>
       <div className={styles.tabHeaderArea}>
-        <button
-          className={
-            activeTab === 0 ? styles.buyTabButton : styles.inactiveTabButton
-          }
-          onClick={() => handleTabClick(0)}
-        >
-          Buy
-        </button>
-        <button
-          className={
-            activeTab === 1 ? styles.sellTabButton : styles.inactiveTabButton
-          }
-          onClick={() => handleTabClick(1)}
-        >
-          Sell
-        </button>
+        <div className={styles.tabHeaderArea2}>
+          <button
+            className={
+              activeTab === 0 ? styles.buyTabButton : styles.inactiveTabButton
+            }
+            onClick={() => handleTabClick(0)}
+          >
+            Buy
+          </button>
+          <button
+            className={
+              activeTab === 1 ? styles.sellTabButton : styles.inactiveTabButton
+            }
+            onClick={() => handleTabClick(1)}
+          >
+            Sell
+          </button>
+        </div>
       </div>
       {activeTab === 0 && (
         <div className={styles.tabContent}>
