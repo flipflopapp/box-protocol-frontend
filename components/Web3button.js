@@ -60,31 +60,26 @@ const Web3Button = () => {
   };
 
   const SwitchNetworkButton = () => {
-    let swichToText;
-    let switchId;
+    const swichToText = "Goerli Network";
+    const switchId = 5;
     const currentNetworkName = chain.name;
-    if (chain.id === goerli.id) {
-      switchId = mainnet.id;
-      swichToText = "Ethereum Network";
-    } else {
-      switchId = goerli.id;
-      swichToText = "Goerli Network";
-    }
 
     return (
       <>
         <h3 className={styles.currentNetworkName}>
           Connected to {currentNetworkName}
         </h3>
-        <button
-          className={styles.networkSwitchButton}
-          onClick={() => {
-            switchNetwork?.(switchId);
-            // setIsOpen(false);
-          }}
-        >
-          Switch to {swichToText}
-        </button>
+        {chain.id !== 5 && (
+          <button
+            className={styles.networkSwitchButton}
+            onClick={() => {
+              switchNetwork?.(switchId);
+              // setIsOpen(false);
+            }}
+          >
+            Switch to {swichToText}
+          </button>
+        )}
       </>
     );
   };
