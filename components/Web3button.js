@@ -34,6 +34,10 @@ const Web3Button = () => {
   } = useSwitchNetwork();
   // console.log({ chain });
 
+  const { data: ensName } = useEnsName({
+    address: address,
+  });
+
   const copyAddressHandler = () => {
     navigator.clipboard.writeText(address);
     setCopyStatus("./check.png");
@@ -88,13 +92,8 @@ const Web3Button = () => {
     let displayAddress =
       address.substring(0, 6) + "...." + address.substring(address.length - 4);
 
-    if (chain.id === 1 || chain.id === 5) {
-      const { data: ensName } = useEnsName({
-        address: address,
-      });
-      if (ensName) {
-        displayAddress = ensName;
-      }
+    if (ensName) {
+      displayAddress = ensName;
     }
 
     return (
