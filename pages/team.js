@@ -93,7 +93,7 @@ export default function Team() {
   return (
     <>
       <main className="main">
-        <Navbar />
+        <Navbar activePage="Team"/>
         <div className={styles.body}>
           <TeamCard
             name="ChiragAgarwal.eth"

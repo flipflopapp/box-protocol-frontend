@@ -4,6 +4,7 @@ import { useState } from "react";
 import styles from "@/styles/App.module.css";
 
 export default function App() {
+  
   const buyBoxes = [
     {
       boxName: "Metaverse",
@@ -63,7 +64,7 @@ export default function App() {
   return (
     <>
       <main>
-        <Navbar />
+        <Navbar activePage="App"/>
         <div className={styles.body}>
           {/* <p className={styles.walletDetails}>Hello World</p> */}
           <BuySellTab buyBoxes={buyBoxes} sellBoxes={sellBoxes} />

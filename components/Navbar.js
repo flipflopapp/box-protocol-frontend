@@ -1,6 +1,7 @@
 import styles from "@/styles/Navbar.module.css";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import { useState } from "react";
 // import Web3Button from "./Web3button";
 
 const Web3Button = dynamic(
@@ -10,7 +11,8 @@ const Web3Button = dynamic(
   { ssr: false }
 );
 
-const Navbar = () => {
+const Navbar = ({activePage}) => {
+
   return (
     <nav className={styles.navbar}>
       <Link href="/">
@@ -19,12 +21,12 @@ const Navbar = () => {
       <ul className={styles.navlist}>
         <li className={styles.navlistitem}></li>
         <li className={styles.navlistitem}>
-          <Link className={styles.navText} href="/app">
+          <Link className={(activePage=="App")? styles.navTextActive: styles.navText} href="/app">
             App
           </Link>
         </li>
         <li className={styles.navlistitem}>
-          <Link className={styles.navText} href="/team">
+          <Link className={(activePage=="Team")? styles.navTextActive: styles.navText} href="/team">
             Team
           </Link>
         </li>
