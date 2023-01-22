@@ -51,6 +51,7 @@
   display: inline-block;
   font-weight: 500;
   color: #101014;
+  text-decoration: none;
   border: none;
   background: linear-gradient(45deg, #3c51ae, #30b9ed) 0;
   border-radius: 30px;
@@ -60,6 +61,7 @@
 }
 
 .connectButton:hover {
+  text-decoration: none;
   background: linear-gradient(45deg, #3a4ea9f8, #2ba2d1f6);
 }
 
@@ -84,6 +86,7 @@
   background-color: #2ba2d1f6;
   color: #101014;
   transition: 0.3s;
+  text-decoration: none;
 }
 
 /* .modal {
