@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const AppButton = (props) => {
   return (
-    <Link href="/app">
+    <Link href="/app" className={styles.buttonText}>
       <button className={styles.connectButton}>{props.text}</button>
     </Link>
   );
