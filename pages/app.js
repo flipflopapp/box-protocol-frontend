@@ -46,6 +46,8 @@ export default function App() {
       ],
     },
   ]);
+  const [appArea, setAppArea] = useState();
+  const [dataStored, setDataStored] = useState(false);
 
   const {isConnected} = useAccount();
   const { chain } = useNetwork();
@@ -108,10 +110,38 @@ export default function App() {
   }
 
   useEffect(()=>{
-    if(isConnected && chain.id === 5){
-      init();
+    if((isConnected && (chain.id === 5))){
+      setAppArea(<LogInView/>);
+    }else{
+      setAppArea(<LogOutView/>);
     }
-  },[isConnected])
+  },[])
+
+  useEffect(()=>{
+    if(isConnected ){
+      if(chain.id === 5){
+        setAppArea(<LogInView/>);
+        if(!dataStored){
+          console.log("====")
+          init();
+          setDataStored(true);
+        }
+      }
+      else{
+     
+        setAppArea(<div className={styles.connectWalletBody}>
+          <SwitchNetworkButton/>
+        </div>)
+      }
+    }else{
+      setAppArea(<div className={styles.connectWalletBody}>
+          <h4 className={styles.connectWalletBodyText}>Wallet is not connected!</h4>
+          <Web3Button/>
+      </div>)
+    }
+  },[isConnected, allBox, chain])
+
+
 
   const LogOutView = () => {
     return(
@@ -146,7 +176,6 @@ export default function App() {
             className={styles.networkSwitchButton}
             onClick={() => {
               switchNetwork?.(switchId);
-              // setIsOpen(false);
             }}
           >
             Switch to {swichToText}
@@ -162,7 +191,7 @@ export default function App() {
     <>
       <main>
         <Navbar activePage="App"/>
-        {(isConnected && (chain.id === 5)) ? <LogInView/> : <LogOutView/>}
+        {appArea}
       </main>
     </>
   );
