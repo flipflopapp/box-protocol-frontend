@@ -1,5 +1,6 @@
 /* Navbar.module.css */
 
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -42,12 +43,12 @@
 }
 
 .connectButton {
+  text-decoration: none;
   width: 180px;
   cursor: pointer;
   padding: 8px 20px;
   font-size: 17px;
   text-align: center;
-  text-decoration: none;
   display: inline-block;
   font-weight: 500;
   color: #101014;
