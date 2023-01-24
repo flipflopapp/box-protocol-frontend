@@ -1,17 +1,44 @@
 import styles from "@/styles/BuyBox.module.css";
 import { useState } from "react";
+import { ethers } from "ethers";
+import { ADDRESS, ABI } from "./constants";
 
 const BuyBox = ({ box }) => {
   const [showBuy, setShowBuy] = useState(false);
   const [amount, setAmount] = useState("");
 
+  const provider = new ethers.providers.Web3Provider(web3.currentProvider);
+  const signer = provider.getSigner();
+  const contract = new ethers.Contract(ADDRESS, ABI, signer);
+
   const navigationHandler = () => {
     setShowBuy(!showBuy);
   };
 
-  const buyHandler = (event) => {
+  const buyHandler = async (event) => {
     event.preventDefault();
-    console.log(amount);
+    if(amount && amount != 0){
+      try{
+        const txValue = ethers.utils.parseEther(amount).toString();
+        const tx = await contract.buy(box.boxId, {
+          value: txValue
+        });
+        console.log({tx});
+        const etherscanLink = `https://goerli.etherscan.io/tx/${tx.hash}`;
+        console.log(etherscanLink);
+        navigationHandler();
+      }
+      catch(e){
+        console.log(e);
+        navigationHandler();
+        alert(e.reason);
+      }
+    }
+    else{
+      console.log("Enter a value");
+      navigationHandler();
+      alert("Enter a value");
+    }
     setAmount("");
   };
 

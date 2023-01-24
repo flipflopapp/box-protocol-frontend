@@ -19,6 +19,7 @@ export default function App() {
 
   const [allBox, setBoxes] = useState([
     {
+      boxId: 0,
       boxName: "Etherize",
       price: loadingText,
       tvl: loadingText,
@@ -28,6 +29,7 @@ export default function App() {
       ],
     },
     {
+      boxId: 1,
       boxName: "DeXplore",
       price: loadingText,
       tvl: loadingText,
@@ -37,6 +39,7 @@ export default function App() {
       ],
     },
     {
+      boxId: 2,
       boxName: "TrioBox",
       price: loadingText,
       tvl: loadingText,
@@ -73,6 +76,7 @@ export default function App() {
       const tvl = tvlTemp/10**18;
       if(i === 0){
         singleBox = {
+          boxId: 0,
           boxName: "Etherize",
           price: "$" + price.toFixed(2).toString(),
           tvl: "$" + tvl.toFixed(2).toString(),
@@ -83,6 +87,7 @@ export default function App() {
         }
       }else if(i === 1 ){
         singleBox = {
+          boxId: 1,
           boxName: "DeXplore",
           price: "$" + price.toFixed(2).toString(),
           tvl: "$" + tvl.toFixed(2).toString(),
@@ -93,6 +98,7 @@ export default function App() {
         }
       }else if (i === 2){
         singleBox = {
+          boxId: 2,
           boxName: "TrioBox",
           price: "$" + price.toFixed(2).toString(),
           tvl: "$" + tvl.toFixed(2).toString(),
