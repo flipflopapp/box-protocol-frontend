@@ -15,12 +15,13 @@ const Web3Button = dynamic(
 );
 
 export default function App() {
+  const loadingText = "Loading..."
 
   const [allBox, setBoxes] = useState([
     {
       boxName: "Etherize",
-      price: "Loading..",
-      tvl: "Loading..",
+      price: loadingText,
+      tvl: loadingText,
       tokenDistribution: [
         { token: "ETH", value: "60%" },
         { token: "WETH", value: "40%" },
@@ -28,8 +29,8 @@ export default function App() {
     },
     {
       boxName: "DeXplore",
-      price: "Loading..",
-      tvl: "Loading..",
+      price: loadingText,
+      tvl: loadingText,
       tokenDistribution: [
         { token: "UNI", value: "80%" },
         { token: "WETH", value: "20%" },
@@ -37,8 +38,8 @@ export default function App() {
     },
     {
       boxName: "TrioBox",
-      price: "Loading..",
-      tvl: "Loading..",
+      price: loadingText,
+      tvl: loadingText,
       tokenDistribution: [
         { token: "ETH", value: "50%" },
         { token: "WETH", value: "20%" },
@@ -168,9 +169,13 @@ export default function App() {
 
     return (
       <>
+      <div className={styles.loginText}>
+
         <h3 className={styles.currentNetworkName}>
           Connected to {currentNetworkName}
         </h3>
+        <p className={styles.demoNetworkText}>Currently the app only works on Goerli Testnet</p>
+      </div>
         {chain.id !== 5 && (
           <button
             className={styles.networkSwitchButton}
