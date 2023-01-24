@@ -21,6 +21,7 @@ const SellBox = ({ box }) => {
           console.log({tx});
           const etherscanLink = `https://goerli.etherscan.io/tx/${tx.hash}`;
           console.log(etherscanLink);
+          alert("Transaction initiated!",);
       }
       catch(e){
         console.log(e);
