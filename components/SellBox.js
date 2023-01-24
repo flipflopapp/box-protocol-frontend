@@ -4,16 +4,11 @@ import { ethers } from "ethers";
 import { ADDRESS, ABI } from "./constants";
 
 const SellBox = ({ box }) => {
-  const [showBuy, setShowBuy] = useState(false);
   const [amount, setAmount] = useState("");
 
   const provider = new ethers.providers.Web3Provider(web3.currentProvider);
   const signer = provider.getSigner();
   const contract = new ethers.Contract(ADDRESS, ABI, signer);
-
-  const navigationHandler = () => {
-    setShowBuy(!showBuy);
-  };
 
   const sellHandler = async (event) => {
     event.preventDefault();
@@ -23,28 +18,18 @@ const SellBox = ({ box }) => {
         console.log({tx});
         const etherscanLink = `https://goerli.etherscan.io/tx/${tx.hash}`;
         console.log(etherscanLink);
-        navigationHandler();
+  
       }
       catch(e){
         console.log(e);
-        navigationHandler();
+  
         alert(e.reason);
       }
     }
     else{
-      navigationHandler();
       alert("Enter a sell amount");
     }
     setAmount("");
-  };
-
-  const Info = (props) => {
-    return (
-      <div className={styles.info}>
-        <p className={styles.infoHeader}>{props.title}</p>
-        <p className={styles.infoAmount}>{props.value}</p>
-      </div>
-    );
   };
 
   const PriceInfo = (props) => {
@@ -56,48 +41,12 @@ const SellBox = ({ box }) => {
     );
   };
 
-  const InfoWithBorder = (props) => {
-    return (
-      <div className={styles.infoWithBorder}>
-        <p className={styles.infoHeader}>{props.title}</p>
-        <p className={styles.infoAmount}>{props.value}</p>
-      </div>
-    );
-  };
-
-  const Box = ({ box }) => {
-    return (
-      <div className={styles.outerBox}>
-        <div className={styles.box}>
-          <h2 className={styles.boxName}>{box.boxName}</h2>
-          <div className={styles.infoArea}>
-            {box.tokenDistribution.map((t) => {
-              return <Info title={t.token} value={t.value} key={t.token} />;
-            })}
-          </div>
-          <div className={styles.infoArea}>
-            <InfoWithBorder title="Price" value={box.price} />
-            <InfoWithBorder title="Total Value Locked" value={box.tvl} />
-          </div>
-
-          <button className={styles.buyPageButton} onClick={navigationHandler}>
-            Proceed to Sell
-          </button>
-        </div>
-      </div>
-    );
-  };
-
   return (
     <>
-      {!showBuy ? (
-        <Box box={box} />
-      ) : (
+       
         <div className={styles.outerBox}>
           <div className={styles.buyBox}>
-            <button className={styles.backButton} onClick={navigationHandler}>
-              Back
-            </button>
+          <h2 className={styles.boxName}>{box.boxName}</h2>
 
             <div className={styles.infoArea}>
               <form onSubmit={sellHandler} className={styles.inputForm}>
@@ -120,84 +69,9 @@ const SellBox = ({ box }) => {
             </div>
           </div>
         </div>
-      )}
+      
     </>
   );
 };
 
 export default SellBox;
-
-{
-  /* <>
-      {boxes.map((box) => {
-        return (
-          <SingleBox
-            boxName={box.boxName}
-            price={box.price}
-            tvl={box.tvl}
-            tokenDistribution={box.tokenDistribution}
-            showBuy={showBuy}
-            navigationHandler={navigationHandler}
-            buyHandler={buyHandler}
-            setAmount={setAmount}
-          />
-        );
-      })}
-    </> */
-}
-
-{
-  /* <>
-      {!showBuy ? (
-        <Box
-          boxName={boxName}
-          price={price}
-          tvl={tvl}
-          tokenDistribution={tokenDistribution}
-        />
-      ) : (
-        <div className={styles.outerBox}>
-          <div className={styles.buyBox}>
-            <button className={styles.backButton} onClick={navigationHandler}>
-              Back
-            </button>
-
-            <div className={styles.infoArea}>
-              <form onSubmit={buyHandler} className={styles.inputForm}>
-                <PriceInfo title="Buy Price:" value={price} />
-                <p className={styles.enterAmounttext}>Enter Amount:</p>
-                <input
-                  className={styles.inputBox}
-                  type="number"
-                  value={amount}
-                  onChange={(e) => setAmount(e.target.value)}
-                />
-                <button
-                  className={styles.buyButton}
-                  type="submit"
-                  value="Submit"
-                >
-                  BUY
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      )}
-    </> */
-}
-
-// const SingleBox = ({
-//   showBuy,
-//   boxName,
-//   price,
-//   tvl,
-//   tokenDistribution,
-//   navigationHandler,
-//   buyHandler,
-//   setAmount,
-// }) => {
-//   return (
-
-//   );
-// };
