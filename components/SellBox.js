@@ -1,17 +1,40 @@
 import styles from "@/styles/SellBox.module.css";
 import { useState } from "react";
+import { ethers } from "ethers";
+import { ADDRESS, ABI } from "./constants";
 
 const SellBox = ({ box }) => {
   const [showBuy, setShowBuy] = useState(false);
   const [amount, setAmount] = useState("");
 
+  const provider = new ethers.providers.Web3Provider(web3.currentProvider);
+  const signer = provider.getSigner();
+  const contract = new ethers.Contract(ADDRESS, ABI, signer);
+
   const navigationHandler = () => {
     setShowBuy(!showBuy);
   };
 
-  const buyHandler = (event) => {
+  const sellHandler = async (event) => {
     event.preventDefault();
-    console.log(amount);
+    if(amount && amount != 0){
+      try{
+        const tx = await contract.sell(box.boxId, amount);
+        console.log({tx});
+        const etherscanLink = `https://goerli.etherscan.io/tx/${tx.hash}`;
+        console.log(etherscanLink);
+        navigationHandler();
+      }
+      catch(e){
+        console.log(e);
+        navigationHandler();
+        alert(e.reason);
+      }
+    }
+    else{
+      navigationHandler();
+      alert("Enter a sell amount");
+    }
     setAmount("");
   };
 
@@ -77,7 +100,7 @@ const SellBox = ({ box }) => {
             </button>
 
             <div className={styles.infoArea}>
-              <form onSubmit={buyHandler} className={styles.inputForm}>
+              <form onSubmit={sellHandler} className={styles.inputForm}>
                 <PriceInfo title="Sell Price:" value={box.price} />
                 <p className={styles.enterAmounttext}>Enter Amount:</p>
                 <input

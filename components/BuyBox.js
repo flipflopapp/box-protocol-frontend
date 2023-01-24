@@ -2,6 +2,7 @@ import styles from "@/styles/BuyBox.module.css";
 import { useState } from "react";
 import { ethers } from "ethers";
 import { ADDRESS, ABI } from "./constants";
+//
 
 const BuyBox = ({ box }) => {
   const [showBuy, setShowBuy] = useState(false);
@@ -35,9 +36,8 @@ const BuyBox = ({ box }) => {
       }
     }
     else{
-      console.log("Enter a value");
       navigationHandler();
-      alert("Enter a value");
+      alert("Enter a buy amount");
     }
     setAmount("");
   };
