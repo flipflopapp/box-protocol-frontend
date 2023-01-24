@@ -2,9 +2,12 @@ import styles from "@/styles/SellBox.module.css";
 import { useState } from "react";
 import { ethers } from "ethers";
 import { ADDRESS, ABI } from "./constants";
+import { useAccount } from "wagmi";
 
 const SellBox = ({ box }) => {
   const [amount, setAmount] = useState("");
+  const [balance, setBalance] = useState("Fetching...");
+  const {address} = useAccount();
 
   const provider = new ethers.providers.Web3Provider(web3.currentProvider);
   const signer = provider.getSigner();
@@ -14,15 +17,13 @@ const SellBox = ({ box }) => {
     event.preventDefault();
     if(amount && amount != 0){
       try{
-        const tx = await contract.sell(box.boxId, amount);
-        console.log({tx});
-        const etherscanLink = `https://goerli.etherscan.io/tx/${tx.hash}`;
-        console.log(etherscanLink);
-  
+          const tx = await contract.sell(box.boxId, amount);
+          console.log({tx});
+          const etherscanLink = `https://goerli.etherscan.io/tx/${tx.hash}`;
+          console.log(etherscanLink);
       }
       catch(e){
         console.log(e);
-  
         alert(e.reason);
       }
     }
@@ -32,12 +33,29 @@ const SellBox = ({ box }) => {
     setAmount("");
   };
 
+  const getBalance = async () => {
+    if(address){
+      const result = await contract.balanceOf(address, box.boxId);
+      const bal = result.toString();
+      setBalance(bal);
+    }else{
+      console.log("address undefined")
+    }
+  }
+
   const PriceInfo = (props) => {
-    return (
+    getBalance();
+
+    return (<div className={styles.infoBox}>
       <div className={styles.priceInfo}>
         <p className={styles.infoHeader}>{props.title}&nbsp;</p>
         <p className={styles.infoAmount}>{props.value}</p>
       </div>
+      <div className={styles.priceInfo}>
+        <p className={styles.infoHeader}>Token Balance:&nbsp;</p>
+        <p className={styles.infoAmount}>{balance}</p>
+      </div>
+    </div>
     );
   };
 
