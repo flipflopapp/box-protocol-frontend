@@ -1,5 +1,5 @@
 const CHIRAG = {
-  BIO: "I am a final-year B.E. Electrical & Electronics engineering student at India's tier-1 institute BITS Pilani Goa. I am fascinated by blockchain technology and have been exploring the financial and tech side of it. As a Blockchain Developer, I have worked on various personal and professional projects. I have worked on projects relating to Web3 payment systems, NFTs, DeFi, zkSNARKs, and oracles. I love mountains & have a passion for travelling, photography, cricket, simulator racing, and graphic designing.",
+  BIO: "I am a final-year B.E. Electrical & Electronics engineering student at BITS Pilani Goa. I am fascinated by blockchain technology and have been exploring the financial and tech side of it. As a software engineer, I have worked on various personal and professional projects. I have worked on projects relating to Web3 payment systems, NFTs, DeFi, zkSNARKs, and oracles. I love mountains & have a passion for travelling, photography, cricket, simulator racing, and graphic designing.",
   LINKEDIN: "https://www.linkedin.com/in/chiragagarwal2001/",
   GITHUB: "https://github.com/Mcverickk",
   TWITTER: "https://twitter.com/mcverickk",
@@ -9,19 +9,18 @@ const CHIRAG = {
 };
 
 const TARUN = {
-  BIO: "I am a final-year B.E. Electrical & Electronics engineering student at India's tier-1 institute BITS Pilani Goa. I am fascinated by blockchain technology and have been exploring the financial and tech side of it. ",
-  LINKEDIN: "https://www.linkedin.com/in/chiragagarwal2001/",
-  TWITTER: "https://twitter.com/mcverickk",
-  INSTAGRAM: "https://www.instagram.com/chitrachirag_/",
-  EMAIL: "chiragagarwal2001@gmail.com",
+  BIO: "I am Tarun Chordia, a fourth year undergraduate student at BITS Pilani, Goa, where I am pursuing a dual degree in B.E Computer Science and M.Sc Economics. I have always had a passion for finding solutions to problems and am excited to apply that interest in the field of blockchain technology. I am eager to apply my knowledge and skills to develop innovative solutions in the blockchain space. Outside of academics, I enjoy photography and spending time in nature.",
+  LINKEDIN: "https://www.linkedin.com/in/tarun-chordia",
+  TWITTER: "https://twitter.com/tarun_chordia",
+  INSTAGRAM: "https://www.instagram.com/tee.cee.graphy/",
+  EMAIL: "tarunchordia22@gmail.com",
 };
 
 const SWAYAM = {
   BIO: "I am a sophomore at BITS, Pilani, Goa with major in Mathematics. I have interest in photography and Blockchain technology.",
   LINKEDIN: "https://www.linkedin.com/in/swayam-ranjan-8103b71b6/",
-  GITHUB: "https://github.com/Mcverickk",
-  TWITTER: "https://twitter.com/mcverickk",
-  EMAIL: "chiragagarwal2001@gmail.com",
+  TWITTER: "https://twitter.com/ranjanswayam10",
+  EMAIL: "f20201590@goa.bits-pilani.ac.in",
 };
 
 const DOCS_LINK = "https://twitter.com/mcverickk";
