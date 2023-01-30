@@ -123,6 +123,7 @@ export default function Team() {
             github={SWAYAM.GITHUB}
             twitter={SWAYAM.TWITTER}
             email={SWAYAM.EMAIL}
+            instagram={TARUN.INSTAGRAM}
           />
         </div>
       </main>
