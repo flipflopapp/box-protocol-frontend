@@ -107,7 +107,7 @@ const BuyBox = ({ box }) => {
             <div className={styles.infoArea}>
               <form onSubmit={buyHandler} className={styles.inputForm}>
                 <PriceInfo title="Buy Price:" value={box.price} />
-                <p className={styles.enterAmounttext}>Enter Amount:</p>
+                <p className={styles.enterAmounttext}>Enter Amount in ETH:</p>
                 <input
                   className={styles.inputBox}
                   type="number"
@@ -131,78 +131,3 @@ const BuyBox = ({ box }) => {
 };
 
 export default BuyBox;
-
-{
-  /* <>
-      {boxes.map((box) => {
-        return (
-          <SingleBox
-            boxName={box.boxName}
-            price={box.price}
-            tvl={box.tvl}
-            tokenDistribution={box.tokenDistribution}
-            showBuy={showBuy}
-            navigationHandler={navigationHandler}
-            buyHandler={buyHandler}
-            setAmount={setAmount}
-          />
-        );
-      })}
-    </> */
-}
-
-{
-  /* <>
-      {!showBuy ? (
-        <Box
-          boxName={boxName}
-          price={price}
-          tvl={tvl}
-          tokenDistribution={tokenDistribution}
-        />
-      ) : (
-        <div className={styles.outerBox}>
-          <div className={styles.buyBox}>
-            <button className={styles.backButton} onClick={navigationHandler}>
-              Back
-            </button>
-
-            <div className={styles.infoArea}>
-              <form onSubmit={buyHandler} className={styles.inputForm}>
-                <PriceInfo title="Buy Price:" value={price} />
-                <p className={styles.enterAmounttext}>Enter Amount:</p>
-                <input
-                  className={styles.inputBox}
-                  type="number"
-                  value={amount}
-                  onChange={(e) => setAmount(e.target.value)}
-                />
-                <button
-                  className={styles.buyButton}
-                  type="submit"
-                  value="Submit"
-                >
-                  BUY
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      )}
-    </> */
-}
-
-// const SingleBox = ({
-//   showBuy,
-//   boxName,
-//   price,
-//   tvl,
-//   tokenDistribution,
-//   navigationHandler,
-//   buyHandler,
-//   setAmount,
-// }) => {
-//   return (
-
-//   );
-// };
