@@ -18,7 +18,7 @@ const HomeNavbar = () => {
             target="_blank"
             rel="noreferrer"
           >
-            Docs
+            GitHub
           </a>
         </li>
         <li className={styles.navlistitem}>
