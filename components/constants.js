@@ -21,6 +21,7 @@ const SWAYAM = {
   LINKEDIN: "https://www.linkedin.com/in/swayam-ranjan-8103b71b6/",
   TWITTER: "https://twitter.com/ranjanswayam10",
   EMAIL: "f20201590@goa.bits-pilani.ac.in",
+  INSTAGRAM: "https://www.instagram.com/ranjanswayam/",
 };
 
 const DOCS_LINK = "https://twitter.com/mcverickk";
