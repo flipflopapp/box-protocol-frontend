@@ -9,7 +9,7 @@ const SellBox = ({ box }) => {
   const [balance, setBalance] = useState("Fetching...");
   const {address} = useAccount();
 
-  const provider = new ethers.providers.Web3Provider(web3.currentProvider);
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
   const signer = provider.getSigner();
   const contract = new ethers.Contract(ADDRESS, ABI, signer);
 

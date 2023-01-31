@@ -8,7 +8,7 @@ const BuyBox = ({ box }) => {
   const [showBuy, setShowBuy] = useState(false);
   const [amount, setAmount] = useState("");
 
-  const provider = new ethers.providers.Web3Provider(web3.currentProvider);
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
   const signer = provider.getSigner();
   const contract = new ethers.Contract(ADDRESS, ABI, signer);
 
