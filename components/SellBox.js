@@ -17,7 +17,8 @@ const SellBox = ({ box }) => {
     event.preventDefault();
     if(amount && amount != 0){
       try{
-          const tx = await contract.sell(box.boxId, amount);
+          const sellAmount = (amount*100).toFixed(0);
+          const tx = await contract.sell(box.boxId, sellAmount);
           console.log({tx});
           const etherscanLink = `https://goerli.etherscan.io/tx/${tx.hash}`;
           console.log(etherscanLink);

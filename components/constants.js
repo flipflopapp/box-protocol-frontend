@@ -17,7 +17,7 @@ const TARUN = {
 };
 
 const SWAYAM = {
-  BIO: "I am a sophomore at BITS, Pilani, Goa with major in Mathematics. I have interest in photography and Blockchain technology.",
+  BIO: "I am a third year undergraduate student at BITS Pilani, Goa, where I am pursuing a dual degree in B.E Electronics & Instrumentation and M.Sc Mathematics. I am a passionate believer in blockchain technology and enjoy exploring more of it. I am always eager to learn more about blockchain. Apart from that, I also hold a Position of responsibility as head of partnerships at Blockchain Club BITS Goa.",
   LINKEDIN: "https://www.linkedin.com/in/swayam-ranjan-8103b71b6/",
   TWITTER: "https://twitter.com/ranjanswayam10",
   EMAIL: "f20201590@goa.bits-pilani.ac.in",
