@@ -1,13 +1,14 @@
 .body {
-  /* background-color: #2a9ecc; */
   padding: 80px 200px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  
 }
 
 .textArea {
   /* background-color: aqua; */
+  
 }
 .imgArea {
 }
@@ -26,4 +27,19 @@
 .detailText {
   color: rgba(240, 248, 255, 0.85);
   margin: 30px 0px;
+}
+
+.footer{
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.footerText{
+  color: rgba(240, 248, 255, 0.5);
+  font-size: 12px;
+
 }

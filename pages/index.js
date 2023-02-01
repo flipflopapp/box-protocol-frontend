@@ -5,7 +5,7 @@ import AppButton from "@/components/AppButton";
 export default function Home() {
   return (
     <>
-      <main className="main">
+      <main className={styles.main}>
         <HomeNavbar />
         <div className={styles.body}>
           <div className={styles.textArea}>
@@ -26,6 +26,9 @@ export default function Home() {
             <img src="./image3.png" className={styles.img} />
           </div>
         </div>
+        <footer className={styles.footer}>
+          <p className={styles.footerText}>Copyright &copy; 2023 Box Protocol</p>
+        </footer>
       </main>
     </>
   );
