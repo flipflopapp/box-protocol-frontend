@@ -37,7 +37,7 @@ const SellBox = ({ box }) => {
   const getBalance = async () => {
     if(address){
       const result = await contract.balanceOf(address, box.boxId);
-      const bal = result.toString();
+      const bal = (result/100).toFixed(2).toString();
       setBalance(bal);
     }else{
       console.log("address undefined")
