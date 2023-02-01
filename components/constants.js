@@ -24,7 +24,7 @@ const SWAYAM = {
   INSTAGRAM: "https://www.instagram.com/ranjanswayam/",
 };
 
-const DOCS_LINK = "https://github.com/Mcverickk/box-protocol-frontend";
+const DOCS_LINK = "https://github.com/Mcverickk/box-protocol-contracts-byor";
 
 
 const ADDRESS = "0x56dBe00Fd8c9599e39E3a49BBC847e1F8d6483Cf";
