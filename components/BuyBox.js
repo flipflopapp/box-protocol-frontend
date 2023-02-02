@@ -1,12 +1,15 @@
 import styles from "@/styles/BuyBox.module.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { ethers } from "ethers";
 import { ADDRESS, ABI } from "./constants";
-//
+import { TxModalContext } from "./TxModalContext";
+import { TransactionCompleted, TransactionInProcess, TransactionFailed } from "./TransactionModal";
 
 const BuyBox = ({ box }) => {
   const [showBuy, setShowBuy] = useState(false);
   const [amount, setAmount] = useState("");
+  const {setModal, setModalOpen} = useContext(TxModalContext);
+
 
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const signer = provider.getSigner();
@@ -24,16 +27,19 @@ const BuyBox = ({ box }) => {
         const tx = await contract.buy(box.boxId, {
           value: txValue
         });
-        console.log({tx});
         const etherscanLink = `https://goerli.etherscan.io/tx/${tx.hash}`;
-        console.log(etherscanLink);
+        setModal(<TransactionInProcess etherscanTxLink={etherscanLink}/>)
+        setModalOpen(true);
+        const tx1 = await tx.wait();
+        console.log({tx1})
         navigationHandler();
-        alert("Transaction initiated!",);
+        setModal(<TransactionCompleted etherscanTxLink={etherscanLink} amount={amount} type="bought" backHandler={setModalOpen}/>)
       }
       catch(e){
         console.log(e);
         navigationHandler();
-        alert(e.reason);
+        setModal(<TransactionFailed backHandler={setModalOpen} error={e.reason}/>)
+        setModalOpen(true);
       }
     }
     else{

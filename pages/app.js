@@ -1,11 +1,12 @@
 import Navbar from "../components/Navbar";
 import BuySellTab from "@/components/BuySellTab";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import styles from "@/styles/App.module.css";
 import { useProvider, useAccount, useNetwork, useSwitchNetwork } from 'wagmi'
 import { ethers } from "ethers";
 import { ABI, ADDRESS } from "@/components/constants";
 import dynamic from "next/dynamic";
+import { TxModalContext } from "@/components/TxModalContext";
 
 const Web3Button = dynamic(
   () => {
@@ -14,9 +15,13 @@ const Web3Button = dynamic(
   { ssr: false }
 );
 
+
 export default function App() {
   const loadingText = "Loading..."
 
+  const [modal, setModal] = useState();
+  const [isModalOpen, setModalOpen] = useState(false);
+  
   const [allBox, setBoxes] = useState([
     {
       boxId: 0,
@@ -161,9 +166,12 @@ export default function App() {
   }
 
   const LogInView = () => {
+    const values = {setModal, setModalOpen}
     return(
     <div className={styles.body}>
-      <BuySellTab buyBoxes={allBox} sellBoxes={allBox} />
+      <TxModalContext.Provider value={values}>
+          <BuySellTab buyBoxes={allBox} sellBoxes={allBox} />
+      </TxModalContext.Provider>
     </div>
     )
   }
@@ -203,6 +211,7 @@ export default function App() {
       <main>
         <Navbar activePage="App"/>
         {appArea}
+        {isModalOpen && modal}
       </main>
     </>
   );

@@ -22,21 +22,23 @@ const TransactionCompleted = ({etherscanTxLink, amount, type, backHandler}) => {
           Transaction Completed
         </h3>
         
-        <p className={styles.modalText}>{amount} Box Tokens {type}</p>
+        <p className={styles.modalText}>Box Tokens worth {amount} ETH {type}</p>
         <a className={styles.etherscanLink} href={etherscanTxLink} target="_blank" rel="noreferrer"><button  className={styles.etherscanButton}>View on Etherscan</button></a>
         <div className={styles.modalCrossButtonDiv}>
-      <button
+        <button
           className={styles.smodalCrossButton}
-          onClick={() => backHandler}
-        >
-            Back
+          onClick={() => {
+            console.log("backHandler");
+            backHandler(false)
+          }}>
+          Back
         </button>
       </div>
     </div>
   </div>)
 }
 
-const TransactionFailed = ({backHandler}) => {
+const TransactionFailed = ({backHandler, error}) => {
   return(<div className={styles.modalOverlay}>
     <div className={styles.modalContent}>
       
@@ -44,10 +46,11 @@ const TransactionFailed = ({backHandler}) => {
         <h3 className={styles.modalHeaderText}>
           Transaction Failed
         </h3> 
+        <p className={styles.modalText}>{error} </p>
         <div className={styles.modalCrossButtonDiv}>
       <button
           className={styles.modalCrossButton}
-          onClick={() => backHandler}
+          onClick={() => {backHandler(false)}}
         >
             Back
         </button>
