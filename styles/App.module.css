@@ -170,6 +170,21 @@
   background-color: #00000020;
 }
 
+
+.smodalCrossButton {
+ 
+  padding: 6px 12px;
+  color: #101014;
+  cursor: pointer;
+  background-color: #00000015;
+  border: none;
+  font-size: 12px;
+  border-radius: 10px;
+}
+.smodalCrossButton:hover {
+  background-color: #00000020;
+}
+
 .modalCrossButtonDiv{
   background-color: transparent;
 }

@@ -26,7 +26,7 @@ const TransactionCompleted = ({etherscanTxLink, amount, type, backHandler}) => {
         <a className={styles.etherscanLink} href={etherscanTxLink} target="_blank" rel="noreferrer"><button  className={styles.etherscanButton}>View on Etherscan</button></a>
         <div className={styles.modalCrossButtonDiv}>
       <button
-          className={styles.modalCrossButton}
+          className={styles.smodalCrossButton}
           onClick={() => backHandler}
         >
             Back
