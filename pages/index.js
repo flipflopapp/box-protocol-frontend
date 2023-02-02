@@ -1,6 +1,6 @@
-import HomeNavbar from "../components/HomeNavbar";
+import HomeNavbar from "../components/Navbar/HomeNavbar";
 import styles from "@/styles/Home.module.css";
-import AppButton from "@/components/AppButton";
+import AppButton from "@/components/Navbar/AppButton";
 
 export default function Home() {
   return (

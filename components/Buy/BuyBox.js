@@ -1,9 +1,9 @@
 import styles from "@/styles/BuyBox.module.css";
 import { useState, useContext } from "react";
 import { ethers } from "ethers";
-import { ADDRESS, ABI } from "./constants";
-import { TxModalContext } from "./TxModalContext";
-import { TransactionCompleted, TransactionInProcess, TransactionFailed } from "./TransactionModal";
+import { ADDRESS, ABI } from "../constants";
+import { TxModalContext } from "../Modals/TxModalContext";
+import { TransactionCompleted, TransactionInProcess, TransactionFailed } from "../Modals/TransactionModal";
 
 const BuyBox = ({ box }) => {
   const [showBuy, setShowBuy] = useState(false);

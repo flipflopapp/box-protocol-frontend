@@ -1,7 +1,7 @@
 import styles from "@/styles/Navbar.module.css";
 import Link from "next/link";
 import AppButton from "./AppButton";
-import { DOCS_LINK } from "./constants";
+import { DOCS_LINK } from "../constants";
 
 const HomeNavbar = () => {
   return (

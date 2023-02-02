@@ -1,16 +1,16 @@
-import Navbar from "../components/Navbar";
-import BuySellTab from "@/components/BuySellTab";
+import Navbar from "../components/Navbar/Navbar";
+import BuySellTab from "@/components/App/BuySellTab";
 import { useEffect, useState, useContext } from "react";
 import styles from "@/styles/App.module.css";
 import { useProvider, useAccount, useNetwork, useSwitchNetwork } from 'wagmi'
 import { ethers } from "ethers";
 import { ABI, ADDRESS } from "@/components/constants";
 import dynamic from "next/dynamic";
-import { TxModalContext } from "@/components/TxModalContext";
+import { TxModalContext } from "@/components/Modals/TxModalContext";
 
 const Web3Button = dynamic(
   () => {
-    return import("@/components/Web3button.js");
+    return import("@/components/Navbar/Web3button.js");
   },
   { ssr: false }
 );
