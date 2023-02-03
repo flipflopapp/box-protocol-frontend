@@ -46,6 +46,8 @@ const SellBox = ({ box }) => {
           />
         );
         setModalOpen(true);
+        getBalance();
+        getData();
       } catch (e) {
         console.log(e);
         setModal(

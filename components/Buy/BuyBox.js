@@ -56,6 +56,7 @@ const BuyBox = ({ box }) => {
           />
         );
         setModalOpen(true);
+        getData();
       } catch (e) {
         console.log(e);
         navigationHandler();
