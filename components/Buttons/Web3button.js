@@ -11,6 +11,23 @@ import {
 import styles from "@/styles/Navbar.module.css";
 import { useState } from "react";
 
+const crossButtonX = (
+  <i
+    class="bi bi-x"
+    style={{
+      background: "transparent",
+      fontSize: "25px",
+      color: "#1010147b",
+    }}
+    onMouseEnter={(e) => {
+      e.target.style.color = "#101014ca";
+    }}
+    onMouseLeave={(e) => {
+      e.target.style.color = "#1010147b";
+    }}
+  />
+);
+
 const Web3Button = () => {
   const { disconnect } = useDisconnect();
   const [isOpen, setIsOpen] = useState(false);
@@ -123,7 +140,7 @@ const Web3Button = () => {
                   className={styles.modalCrossButton}
                   onClick={() => setIsOpen(false)}
                 >
-                  Back
+                  {crossButtonX}
                 </button>
               </div>
               <div className={styles.modalFooter}>

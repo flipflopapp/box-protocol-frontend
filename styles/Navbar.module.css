@@ -1,6 +1,6 @@
 /* Navbar.module.css */
 
-.buttonText{
+.buttonText {
   text-decoration: none;
 }
 
@@ -197,17 +197,17 @@
 }
 
 .modalCrossButton {
-  padding: 6px 12px;
+  padding-left: 4px;
   color: #101014;
   cursor: pointer;
 
-  background-color: #00000015;
+  background-color: transparent;
   border: none;
   font-size: 12px;
   border-radius: 10px;
 }
 .modalCrossButton:hover {
-  background-color: #00000020;
+  /* background-color: #00000020; */
 }
 
 .copyButton {
