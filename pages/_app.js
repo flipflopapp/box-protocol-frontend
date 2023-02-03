@@ -38,7 +38,7 @@ export default function App({ Component, pageProps }) {
         <title>Box Protocol</title>
         <meta
           name="description"
-          content="A DeFi app that lets you invest in tokenized boxes of crypto assets, representing the hottest ideas and sectors in Web3."
+          content="A DeFi app that lets you invest in tokenized boxes of crypto assets representing the hottest ideas and sectors in Web3."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/BoxProtocol.ico" />
