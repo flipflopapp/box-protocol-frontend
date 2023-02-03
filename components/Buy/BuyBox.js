@@ -1,5 +1,5 @@
 import styles from "@/styles/BuyBox.module.css";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { ethers } from "ethers";
 import { ADDRESS, ABI } from "../constants";
 import { TxModalContext } from "../Modals/TxModalContext";
@@ -23,6 +23,10 @@ const BuyBox = ({ box }) => {
   const navigationHandler = () => {
     setShowBuy(!showBuy);
   };
+  
+  useEffect(()=>{
+    getData();
+  },[]);
 
   const buyHandler = async (event) => {
     event.preventDefault();
@@ -67,7 +71,7 @@ const BuyBox = ({ box }) => {
     setAmount("");
   };
 
-  
+
   const getData = async () => {
     const priceTemp = await contract.getBoxTokenPrice(box.boxId);
     const tvlTemp = await contract.getBoxTVL(box.boxId);
@@ -105,7 +109,6 @@ const BuyBox = ({ box }) => {
   };
 
   const Box = ({ box }) => {
-    getData();
     return (
       <div className={styles.outerBox}>
         <div className={styles.box}>

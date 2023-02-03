@@ -1,5 +1,5 @@
 import styles from "@/styles/SellBox.module.css";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { ethers } from "ethers";
 import { ADDRESS, ABI } from "../constants";
 import { useAccount } from "wagmi";
@@ -75,9 +75,12 @@ const SellBox = ({ box }) => {
     setPrice("$" + price.toFixed(2).toString());
   };
 
-  const PriceInfo = (props) => {
+  useEffect(()=>{
     getBalance();
     getData();
+  },[]);
+
+  const PriceInfo = (props) => {
 
     return (
       <div className={styles.infoBox}>
