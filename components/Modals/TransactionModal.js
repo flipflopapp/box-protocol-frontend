@@ -1,5 +1,22 @@
 import styles from "@/styles/Modal.module.css";
 
+const crossButtonX = (
+  <i
+    class="bi bi-x"
+    style={{
+      background: "transparent",
+      fontSize: "30px",
+      color: "#1010147b",
+    }}
+    onMouseEnter={(e) => {
+      e.target.style.color = "#101014ca";
+    }}
+    onMouseLeave={(e) => {
+      e.target.style.color = "#1010147b";
+    }}
+  />
+);
+
 const TransactionInProcess = ({ etherscanTxLink, backHandler }) => {
   return (
     <div className={styles.modalOverlay}>
@@ -11,7 +28,7 @@ const TransactionInProcess = ({ etherscanTxLink, backHandler }) => {
               backHandler(false);
             }}
           >
-            Back
+            {crossButtonX}
           </button>
         </div>
         <div className={styles.modalFooter}>
@@ -50,7 +67,7 @@ const TransactionCompleted = ({
               backHandler(false);
             }}
           >
-            Back
+            {crossButtonX}
           </button>
         </div>
         <div className={styles.modalFooter}>
@@ -87,7 +104,7 @@ const TransactionFailed = ({ backHandler, error }) => {
               backHandler(false);
             }}
           >
-            Back
+            {crossButtonX}
           </button>
         </div>
         <div className={styles.modalFooter}>

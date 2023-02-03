@@ -15,8 +15,8 @@
   background-color: aliceblue;
   padding: 20px;
   border-radius: 10px;
-  width: 40%;
-  height: 50%;
+  width: 35%;
+  height: 45%;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -55,23 +55,19 @@
   flex-wrap: wrap;
   justify-content: right;
   align-items: center;
-  padding-bottom: 10px;
+  /* padding-bottom: 100px; */
   /* margin-bottom: 20px; */
   background-color: transparent;
 }
 
 .modalCrossButton {
-  padding: 6px 12px;
-  color: #101014;
+  padding: 0px 4px;
+  /* color: #101014; */
   cursor: pointer;
 
-  background-color: #00000015;
+  background-color: transparent;
   border: none;
-  font-size: 12px;
   border-radius: 10px;
-}
-.modalCrossButton:hover {
-  background-color: #00000020;
 }
 
 .modalHeader h2 {
@@ -111,7 +107,7 @@
 
 .etherscanLink {
   background-color: transparent;
-  width: 80%;
+  width: 60%;
 }
 
 .etherscanButton {
