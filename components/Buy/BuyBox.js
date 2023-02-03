@@ -37,6 +37,7 @@ const BuyBox = ({ box }) => {
           value: txValue,
         });
         const etherscanLink = `https://goerli.etherscan.io/tx/${tx.hash}`;
+        navigationHandler();
         setModal(
           <TransactionInProcess
             etherscanTxLink={etherscanLink}
@@ -46,7 +47,6 @@ const BuyBox = ({ box }) => {
         setModalOpen(true);
         const tx1 = await tx.wait();
         console.log({ tx1 });
-        navigationHandler();
         setModal(
           <TransactionCompleted
             etherscanTxLink={etherscanLink}
