@@ -15,8 +15,8 @@
   background-color: aliceblue;
   padding: 20px;
   border-radius: 10px;
-  width: 35%;
-  height: 45%;
+  width: 30%;
+  height: 50%;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
