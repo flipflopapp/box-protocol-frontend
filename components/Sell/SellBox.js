@@ -13,6 +13,7 @@ import {
 const SellBox = ({ box }) => {
   const [amount, setAmount] = useState("");
   const [balance, setBalance] = useState("Fetching...");
+  const [price, setPrice] = useState("Fetching...");
   const { address } = useAccount();
   const { setModal, setModalOpen } = useContext(TxModalContext);
 
@@ -68,14 +69,21 @@ const SellBox = ({ box }) => {
     }
   };
 
+  const getData = async () => {
+    const priceTemp = await contract.getBoxTokenPrice(box.boxId);
+    const price = priceTemp / 10 ** 18;
+    setPrice("$" + price.toFixed(2).toString());
+  };
+
   const PriceInfo = (props) => {
     getBalance();
+    getData();
 
     return (
       <div className={styles.infoBox}>
         <div className={styles.priceInfo}>
           <p className={styles.infoHeader}>{props.title}&nbsp;</p>
-          <p className={styles.infoAmount}>{props.value}</p>
+          <p className={styles.infoAmount}>{price}</p>
         </div>
         <div className={styles.priceInfo}>
           <p className={styles.infoHeader}>Box Token Balance:&nbsp;</p>
@@ -93,7 +101,7 @@ const SellBox = ({ box }) => {
 
           <div className={styles.infoArea}>
             <form onSubmit={sellHandler} className={styles.inputForm}>
-              <PriceInfo title="Sell Price:" value={box.price} />
+              <PriceInfo title="Sell Price:" />
               <p className={styles.enterAmounttext}>Enter Token Amount:</p>
               <input
                 className={styles.inputBox}

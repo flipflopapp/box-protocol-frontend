@@ -21,8 +21,6 @@ const Web3Button = dynamic(
 );
 
 export default function App() {
-  const loadingText = "Loading...";
-
   const [modal, setModal] = useState();
   const [isModalOpen, setModalOpen] = useState(false);
 
@@ -30,8 +28,6 @@ export default function App() {
     {
       boxId: 0,
       boxName: "Etherize",
-      price: loadingText,
-      tvl: loadingText,
       tokenDistribution: [
         { token: "ETH", value: "60%" },
         { token: "WETH", value: "40%" },
@@ -40,8 +36,6 @@ export default function App() {
     {
       boxId: 1,
       boxName: "DeXplore",
-      price: loadingText,
-      tvl: loadingText,
       tokenDistribution: [
         { token: "UNI", value: "80%" },
         { token: "WETH", value: "20%" },
@@ -50,8 +44,6 @@ export default function App() {
     {
       boxId: 2,
       boxName: "TrioBox",
-      price: loadingText,
-      tvl: loadingText,
       tokenDistribution: [
         { token: "ETH", value: "50%" },
         { token: "WETH", value: "20%" },
@@ -60,7 +52,6 @@ export default function App() {
     },
   ]);
   const [appArea, setAppArea] = useState();
-  const [dataStored, setDataStored] = useState(false);
 
   const { isConnected } = useAccount();
   const { chain } = useNetwork();
@@ -75,56 +66,6 @@ export default function App() {
   const provider = useProvider();
   const boxProtocolContract = new ethers.Contract(ADDRESS, ABI, provider);
 
-  const init = async () => {
-    let boxes = [];
-    for (let i = 0; i < 3; i++) {
-      let singleBox;
-      const priceTemp = await boxProtocolContract.getBoxTokenPrice(i);
-      const tvlTemp = await boxProtocolContract.getBoxTVL(i);
-      const price = priceTemp / 10 ** 18;
-      const tvl = tvlTemp / 10 ** 18;
-      if (i === 0) {
-        singleBox = {
-          boxId: 0,
-          boxName: "Etherize",
-          price: "$" + price.toFixed(2).toString(),
-          tvl: "$" + tvl.toFixed(2).toString(),
-          tokenDistribution: [
-            { token: "ETH", value: "60%" },
-            { token: "WETH", value: "40%" },
-          ],
-        };
-      } else if (i === 1) {
-        singleBox = {
-          boxId: 1,
-          boxName: "DeXplore",
-          price: "$" + price.toFixed(2).toString(),
-          tvl: "$" + tvl.toFixed(2).toString(),
-          tokenDistribution: [
-            { token: "UNI", value: "80%" },
-            { token: "WETH", value: "20%" },
-          ],
-        };
-      } else if (i === 2) {
-        singleBox = {
-          boxId: 2,
-          boxName: "TrioBox",
-          price: "$" + price.toFixed(2).toString(),
-          tvl: "$" + tvl.toFixed(2).toString(),
-          tokenDistribution: [
-            { token: "ETH", value: "50%" },
-            { token: "WETH", value: "20%" },
-            { token: "UNI", value: "30%" },
-          ],
-        };
-      }
-
-      boxes.push(singleBox);
-    }
-    console.log({ boxes });
-    setBoxes(boxes);
-  };
-
   useEffect(() => {
     if (isConnected && chain.id === 5) {
       setAppArea(<LogInView />);
@@ -137,11 +78,6 @@ export default function App() {
     if (isConnected) {
       if (chain.id === 5) {
         setAppArea(<LogInView />);
-        if (!dataStored) {
-          console.log("====");
-          init();
-          setDataStored(true);
-        }
       } else {
         setAppArea(
           <div className={styles.connectWalletBody}>

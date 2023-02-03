@@ -12,6 +12,8 @@ import {
 const BuyBox = ({ box }) => {
   const [showBuy, setShowBuy] = useState(false);
   const [amount, setAmount] = useState("");
+  const [price, setPrice] = useState("Fetching...");
+  const [tvl, setTvl] = useState("Fetching...");
   const { setModal, setModalOpen } = useContext(TxModalContext);
 
   const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -65,6 +67,16 @@ const BuyBox = ({ box }) => {
     setAmount("");
   };
 
+  
+  const getData = async () => {
+    const priceTemp = await contract.getBoxTokenPrice(box.boxId);
+    const tvlTemp = await contract.getBoxTVL(box.boxId);
+    const price = priceTemp / 10 ** 18;
+    const tvl = tvlTemp / 10 ** 18;
+    setPrice("$" + price.toFixed(2).toString());
+    setTvl("$" + tvl.toFixed(2).toString());
+  };
+
   const Info = (props) => {
     return (
       <div className={styles.info}>
@@ -93,6 +105,7 @@ const BuyBox = ({ box }) => {
   };
 
   const Box = ({ box }) => {
+    getData();
     return (
       <div className={styles.outerBox}>
         <div className={styles.box}>
@@ -103,8 +116,8 @@ const BuyBox = ({ box }) => {
             })}
           </div>
           <div className={styles.infoArea}>
-            <InfoWithBorder title="Price" value={box.price} />
-            <InfoWithBorder title="Total Value Locked" value={box.tvl} />
+            <InfoWithBorder title="Price" value={price} />
+            <InfoWithBorder title="Total Value Locked" value={tvl} />
           </div>
 
           <button className={styles.buyPageButton} onClick={navigationHandler}>
@@ -128,7 +141,7 @@ const BuyBox = ({ box }) => {
 
             <div className={styles.infoArea}>
               <form onSubmit={buyHandler} className={styles.inputForm}>
-                <PriceInfo title="Buy Price:" value={box.price} />
+                <PriceInfo title="Buy Price:" value={price} />
                 <p className={styles.enterAmounttext}>Enter Amount in ETH:</p>
                 <input
                   className={styles.inputBox}
