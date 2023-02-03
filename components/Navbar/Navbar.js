@@ -11,8 +11,7 @@ const Web3Button = dynamic(
   { ssr: false }
 );
 
-const Navbar = ({activePage}) => {
-
+const Navbar = ({ activePage }) => {
   return (
     <nav className={styles.navbar}>
       <Link href="/">
@@ -21,12 +20,22 @@ const Navbar = ({activePage}) => {
       <ul className={styles.navlist}>
         <li className={styles.navlistitem}></li>
         <li className={styles.navlistitem}>
-          <Link className={(activePage=="App")? styles.navTextActive: styles.navText} href="/app">
+          <Link
+            className={
+              activePage == "App" ? styles.navTextActive : styles.navText
+            }
+            href="/app"
+          >
             App
           </Link>
         </li>
         <li className={styles.navlistitem}>
-          <Link className={(activePage=="Team")? styles.navTextActive: styles.navText} href="/team">
+          <Link
+            className={
+              activePage == "Team" ? styles.navTextActive : styles.navText
+            }
+            href="/team"
+          >
             Team
           </Link>
         </li>

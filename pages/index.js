@@ -27,7 +27,9 @@ export default function Home() {
           </div>
         </div>
         <footer className={styles.footer}>
-          <p className={styles.footerText}>Copyright &copy; 2023 Box Protocol</p>
+          <p className={styles.footerText}>
+            Copyright &copy; 2023 Box Protocol
+          </p>
         </footer>
       </main>
     </>

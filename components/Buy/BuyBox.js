@@ -3,13 +3,16 @@ import { useState, useContext } from "react";
 import { ethers } from "ethers";
 import { ADDRESS, ABI } from "../constants";
 import { TxModalContext } from "../Modals/TxModalContext";
-import { TransactionCompleted, TransactionInProcess, TransactionFailed } from "../Modals/TransactionModal";
+import {
+  TransactionCompleted,
+  TransactionInProcess,
+  TransactionFailed,
+} from "../Modals/TransactionModal";
 
 const BuyBox = ({ box }) => {
   const [showBuy, setShowBuy] = useState(false);
   const [amount, setAmount] = useState("");
-  const {setModal, setModalOpen} = useContext(TxModalContext);
-
+  const { setModal, setModalOpen } = useContext(TxModalContext);
 
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const signer = provider.getSigner();
@@ -21,28 +24,41 @@ const BuyBox = ({ box }) => {
 
   const buyHandler = async (event) => {
     event.preventDefault();
-    if(amount && amount != 0){
-      try{
+    if (amount && amount != 0) {
+      try {
         const txValue = ethers.utils.parseEther(amount).toString();
         const tx = await contract.buy(box.boxId, {
-          value: txValue
+          value: txValue,
         });
         const etherscanLink = `https://goerli.etherscan.io/tx/${tx.hash}`;
-        setModal(<TransactionInProcess etherscanTxLink={etherscanLink}/>)
+        setModal(
+          <TransactionInProcess
+            etherscanTxLink={etherscanLink}
+            backHandler={setModalOpen}
+          />
+        );
         setModalOpen(true);
         const tx1 = await tx.wait();
-        console.log({tx1})
+        console.log({ tx1 });
         navigationHandler();
-        setModal(<TransactionCompleted etherscanTxLink={etherscanLink} amount={amount} type="bought" backHandler={setModalOpen}/>)
-      }
-      catch(e){
+        setModal(
+          <TransactionCompleted
+            etherscanTxLink={etherscanLink}
+            amount={amount}
+            type="bought"
+            backHandler={setModalOpen}
+          />
+        );
+        setModalOpen(true);
+      } catch (e) {
         console.log(e);
         navigationHandler();
-        setModal(<TransactionFailed backHandler={setModalOpen} error={e.reason}/>)
+        setModal(
+          <TransactionFailed backHandler={setModalOpen} error={e.reason} />
+        );
         setModalOpen(true);
       }
-    }
-    else{
+    } else {
       navigationHandler();
       alert("Enter a buy amount");
     }
