@@ -10,7 +10,7 @@ import { TxModalContext } from "@/components/Modals/TxModalContext";
 
 const Web3Button = dynamic(
   () => {
-    return import("@/components/Navbar/Web3button.js");
+    return import("@/components/Buttons/Web3button.js");
   },
   { ssr: false }
 );

@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const Web3Button = dynamic(
   () => {
-    return import("./Web3button.js");
+    return import("../Buttons/Web3button.js");
   },
   { ssr: false }
 );

@@ -1,6 +1,6 @@
 import styles from "@/styles/Navbar.module.css";
 import Link from "next/link";
-import AppButton from "./AppButton";
+import AppButton from "../Buttons/AppButton";
 import { DOCS_LINK } from "../constants";
 
 const HomeNavbar = () => {
