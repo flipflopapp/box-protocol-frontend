@@ -41,7 +41,7 @@ const SellBox = ({ box }) => {
           <TransactionCompleted
             etherscanTxLink={etherscanLink}
             amount={amount}
-            type="sold"
+            type="sell"
             backHandler={setModalOpen}
           />
         );
@@ -77,13 +77,12 @@ const SellBox = ({ box }) => {
     setPrice("$" + price.toFixed(2).toString());
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     getBalance();
     getData();
-  },[]);
+  }, []);
 
   const PriceInfo = (props) => {
-
     return (
       <div className={styles.infoBox}>
         <div className={styles.priceInfo}>

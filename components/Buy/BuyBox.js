@@ -23,10 +23,10 @@ const BuyBox = ({ box }) => {
   const navigationHandler = () => {
     setShowBuy(!showBuy);
   };
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     getData();
-  },[]);
+  }, []);
 
   const buyHandler = async (event) => {
     event.preventDefault();
@@ -51,7 +51,7 @@ const BuyBox = ({ box }) => {
           <TransactionCompleted
             etherscanTxLink={etherscanLink}
             amount={amount}
-            type="bought"
+            type="buy"
             backHandler={setModalOpen}
           />
         );
@@ -71,7 +71,6 @@ const BuyBox = ({ box }) => {
     }
     setAmount("");
   };
-
 
   const getData = async () => {
     const priceTemp = await contract.getBoxTokenPrice(box.boxId);

@@ -57,7 +57,8 @@ const TransactionCompleted = ({
           <img src="success.jpeg" className={styles.successImg} />
           <h3 className={styles.modalHeaderText}>Transaction Completed</h3>
           <p className={styles.modalText}>
-            Box Tokens worth {amount} ETH {type}
+            {type === "buy" && `Box Tokens worth ${amount} ETH bought`}
+            {type === "sell" && `${amount} Box Tokens sold`}
           </p>
           <a
             className={styles.etherscanLink}
